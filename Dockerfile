@@ -6,6 +6,7 @@ RUN apk add bash \
     autoconf \
     automake \
     build-base \
+    curl \
     elfutils-dev \
     gettext-dev \
     git \
@@ -21,5 +22,8 @@ RUN apk add bash \
 
 COPY --from=ksrc /kernel-dev.tar /
 RUN tar xf kernel-dev.tar
+
+# Get Config from github linuxkit
+RUN curl -sSL -o /usr/src/linux-headers-5.4.39-linuxkit/.config https://raw.githubusercontent.com/linuxkit/linuxkit/master/kernel/config-5.4.x-x86_64
 
 COPY compile-zfs.sh /
