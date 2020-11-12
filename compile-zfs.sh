@@ -1,5 +1,9 @@
 #!/bin/bash
 
+set -ex
+
+uname -a
+
 git clone https://github.com/zfsonlinux/zfs /src/zfs
 cd /src/zfs
 git checkout zfs-0.8.2

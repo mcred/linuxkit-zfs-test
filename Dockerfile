@@ -27,3 +27,5 @@ RUN tar xf kernel-dev.tar
 RUN curl -sSL -o /usr/src/linux-headers-5.4.39-linuxkit/.config https://raw.githubusercontent.com/linuxkit/linuxkit/master/kernel/config-5.4.x-x86_64
 
 COPY compile-zfs.sh /
+
+ENTRYPOINT ["/bin/bash", "/compile-zfs.sh"]
