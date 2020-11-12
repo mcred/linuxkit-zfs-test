@@ -6,13 +6,15 @@ jobs:
   build-linuxkit-zfs:
     strategy:
       matrix:
-        os: [ubuntu-18.04, windows-2019]
+        os: [ubuntu-18.04]
     runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v1
       - name: System uname
         run: uname -a
-        shell: bash
       - name: docker uname
         run: docker run busybox uname -a
-        shell: bash
+      - name: docker build
+        run: docker build . -t linuxkit-builder
+      - name: docker run
+        run: docker run linuxkit-builder
